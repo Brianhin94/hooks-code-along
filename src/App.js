@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import IntervalTicker from './IntervalTicker'
 
 function App() {
   const [count, setCount] = useState(1)
   const [user, setUser] = useState({name: "Bear"})
   const [pokeImg, setPokeImg] = useState("")
-
+  const [message, setMessage] = useState("Hello, World!")
+ 
   const increaseCount = () => {
     setCount(count+1)
   }
@@ -35,6 +37,11 @@ function App() {
       <button onClick={increaseCount}>Click Me!</button>
       <h2>The user is: {user.name}</h2>
       <img src={pokeImg} alt="pokemon" />
+      <form>
+        <h1>Send your Pokemon a message:</h1>
+        <input type="text" value={message} onChange={(e) => {setMessage(e.target.value)}} />
+      </form>
+      <IntervalTicker message={message} />
     </>
   )
 }
