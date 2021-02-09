@@ -16,7 +16,9 @@ function App() {
 
     // add title to my page
     document.title = `Hello, ${user.name}`
+  }, [])
 
+  useEffect(() => {
     // call poke api and return poke img
     axios.get(`https://pokeapi.co/api/v2/pokemon/${count}`)
     .then(response => {
@@ -25,7 +27,7 @@ function App() {
     .catch(err => {
       console.log(`The error is: ${err}`)
     })
-  }, [])
+  }, [count])
 
   return(
     <>
